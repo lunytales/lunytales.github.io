@@ -4,9 +4,8 @@
   --white:#ffffff;
 
   --hero-text:#ffffff;
-  --hero-muted:rgba(255,255,255,.82);
+  --hero-muted:rgba(255,255,255,.86);
 
-  --radius-lg:28px;
   --pill:999px;
 }
 
@@ -15,25 +14,26 @@ body{
   background:#f7f8fb;
 }
 
-/* Navbar morada (solo arriba) */
+/* Navbar morada */
 .nav-luny{
   background: var(--indigo);
-  border-bottom: 1px solid rgba(255,255,255,.10);
+  border-bottom: 1px solid rgba(255,255,255,.12);
 }
 
 .nav-luny .nav-link{
-  color: rgba(255,255,255,.88);
+  color: rgba(255,255,255,.9);
 }
 
 .nav-luny .nav-link:hover{
-  color: #ffffff;
+  color:#fff;
 }
 
-/* Botones (más redondos tipo Figma) */
+/* Botones más redondos */
 .btn-pill{
   border-radius: var(--pill) !important;
 }
 
+/* Bootstrap override (solo look, no rompe layout) */
 .btn-primary{
   background: var(--mint);
   border-color: var(--mint);
@@ -42,20 +42,17 @@ body{
 }
 
 .btn-primary:hover{
-  background: #79d9b4;
-  border-color: #79d9b4;
-  color: #0b1f17;
+  background: #78d8b3;
+  border-color: #78d8b3;
+  color:#0b1f17;
 }
 
 .btn-outline-light{
   border-width: 2px;
+  font-weight: 700;
 }
 
-.btn-outline-secondary{
-  border-color: rgba(58,50,156,.25);
-}
-
-/* Cards / rounding general (no destruye Bootstrap, solo mejora look) */
+/* Cards */
 .card{
   border: 1px solid rgba(0,0,0,.06);
   border-radius: 18px;
@@ -65,29 +62,16 @@ body{
   box-shadow: 0 18px 60px rgba(0,0,0,.08) !important;
 }
 
-/* HERO (solo primera sección) */
+/* HERO */
 .hero-luny{
-  position: relative;
-  background: var(--indigo);
+  background: var(--indigo);   /* morado sólido */
   color: var(--hero-text);
   padding: 72px 0 64px;
-  overflow: hidden;
 }
 
-.hero-luny::before{
-  /* sutiles luces para que no se vea “plano” */
-  content:"";
-  position:absolute;
-  inset:-20% -10% auto -10%;
-  height: 420px;
-  background:
-    radial-gradient(520px 320px at 12% 20%, rgba(255,255,255,.12), transparent 70%),
-    radial-gradient(520px 320px at 88% 20%, rgba(95,196,152,.20), transparent 70%);
-  pointer-events:none;
-}
-
+/* Logo grande en hero */
 .hero-logo{
-  width: min(360px, 90%);
+  width: min(460px, 100%);
   height: auto;
   display:block;
 }
@@ -103,9 +87,39 @@ body{
 .hero-lead{
   color: var(--hero-muted);
   font-size: 1.08rem;
-  max-width: 46ch;
+  max-width: 52ch;
 }
 
 .hero-note{
-  color: rgba(255,255,255,.70);
- 
+  color: rgba(255,255,255,.75);
+  font-size: .9rem;
+}
+
+/* Media del hero (NO recorta) */
+.hero-media{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+}
+
+/* Mascota controlada: nunca se corta */
+.hero-mascota{
+  width: 100%;
+  max-width: 680px;  /* ajusta si la quieres más pequeña */
+  height: auto;
+  display: block;
+}
+
+/* Responsive: en móvil baja tamaño y evita “zoom” */
+@media (max-width: 991.98px){
+  .hero-luny{
+    padding: 48px 0 40px;
+  }
+  .hero-logo{
+    width: min(360px, 100%);
+  }
+  .hero-mascota{
+    max-width: 520px;
+  }
+}
