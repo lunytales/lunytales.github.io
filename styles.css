@@ -121,18 +121,3 @@ body{
     max-width: 520px;
   }
 }
-
-/* Puente visual: transición hero morado -> secciones claras */
-.hero-bridge{
-  height: 96px;
-  margin-top: -1px; /* evita línea entre bloques */
-  background:
-    radial-gradient(900px 140px at 20% 0%, rgba(95,196,152,.22), transparent 60%),
-    linear-gradient(
-      180deg,
-      var(--indigo) 0%,
-      rgba(58,50,156,.92) 28%,
-      rgba(58,50,156,.55) 55%,
-      #ffffff 100%
-    );
-}
