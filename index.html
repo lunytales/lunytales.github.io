@@ -9,17 +9,20 @@
   <!-- Bootstrap (CDN) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="./styles.css" rel="stylesheet">
-
 </head>
+
 <body class="bg-light">
 
   <!-- Top bar -->
   <nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top">
     <div class="container">
       <a class="navbar-brand fw-bold" href="#">Luny Tales</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav"
+        aria-controls="nav" aria-expanded="false" aria-label="Abrir menú">
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div class="collapse navbar-collapse" id="nav">
         <div class="navbar-nav ms-auto gap-2">
           <a class="nav-link" href="#incluye">Qué incluye</a>
@@ -34,6 +37,7 @@
   <header class="py-5">
     <div class="container">
       <div class="row align-items-center g-4">
+
         <div class="col-lg-6">
           <h1 class="display-5 fw-bold">Cuentos para dormir que sí funcionan.</h1>
           <p class="lead text-secondary mt-3">
@@ -52,42 +56,15 @@
         </div>
 
         <div class="col-lg-6">
+          <!-- Placeholder de imagen/mascota (responsive) -->
           <div class="card shadow-sm">
             <div class="card-body">
-              <div class="ratio ratio-4x3 bg-body-secondary rounded mb-3 d-flex align-items-center justify-content-center">
+              <div class="ratio ratio-4x3 bg-body-secondary rounded d-flex align-items-center justify-content-center">
                 <div class="text-center p-3">
-                  <div class="fw-bold">Aquí irá tu banner o video</div>
-                  <div class="text-secondary small">Placeholder (sin subir assets todavía)</div>
+                  <div class="fw-bold">Aquí irá tu mascota / banner</div>
+                  <div class="text-secondary small">Cuando subas el archivo, lo conectamos</div>
                 </div>
               </div>
-
-              <div class="row g-2">
-                <div class="col-12">
-                  <div class="border rounded p-3">
-                    <div class="fw-bold">PDF interactivo</div>
-                    <div class="text-secondary small">Lectura guiada para rutina nocturna.</div>
-                  </div>
-                </div>
-                <div class="col-12">
-                  <div class="border rounded p-3">
-                    <div class="fw-bold">Audiocuentos</div>
-                    <div class="text-secondary small">Para escuchar sin pantallas.</div>
-                  </div>
-                </div>
-                <div class="col-12">
-                  <div class="border rounded p-3">
-                    <div class="fw-bold">Música para dormir</div>
-                    <div class="text-secondary small">Pistas suaves para cerrar el día.</div>
-                  </div>
-                </div>
-                <div class="col-12">
-                  <div class="border rounded p-3">
-                    <div class="fw-bold">Skill de Alexa</div>
-                    <div class="text-secondary small">Acceso por voz (cuando lo actives).</div>
-                  </div>
-                </div>
-              </div>
-
             </div>
           </div>
         </div>
@@ -100,6 +77,7 @@
   <section class="py-5 bg-white border-top" id="incluye">
     <div class="container">
       <h2 class="fw-bold mb-4">Qué incluye</h2>
+
       <div class="row g-3">
         <div class="col-md-6 col-lg-3">
           <div class="card h-100">
@@ -109,6 +87,7 @@
             </div>
           </div>
         </div>
+
         <div class="col-md-6 col-lg-3">
           <div class="card h-100">
             <div class="card-body">
@@ -117,6 +96,7 @@
             </div>
           </div>
         </div>
+
         <div class="col-md-6 col-lg-3">
           <div class="card h-100">
             <div class="card-body">
@@ -125,6 +105,7 @@
             </div>
           </div>
         </div>
+
         <div class="col-md-6 col-lg-3">
           <div class="card h-100">
             <div class="card-body">
@@ -134,6 +115,7 @@
           </div>
         </div>
       </div>
+
     </div>
   </section>
 
@@ -141,6 +123,7 @@
   <section class="py-5" id="como">
     <div class="container">
       <h2 class="fw-bold mb-4">Cómo funciona</h2>
+
       <div class="row g-3">
         <div class="col-lg-4">
           <div class="border rounded p-4 bg-white h-100">
@@ -148,12 +131,14 @@
             <div class="text-secondary small mt-1">Corta y directa al punto.</div>
           </div>
         </div>
+
         <div class="col-lg-4">
           <div class="border rounded p-4 bg-white h-100">
             <div class="fw-bold">2) Audio o lectura</div>
             <div class="text-secondary small mt-1">Usa el formato que te funcione esa noche.</div>
           </div>
         </div>
+
         <div class="col-lg-4">
           <div class="border rounded p-4 bg-white h-100">
             <div class="fw-bold">3) Cierra con música</div>
@@ -161,6 +146,7 @@
           </div>
         </div>
       </div>
+
     </div>
   </section>
 
@@ -176,5 +162,6 @@
     document.getElementById("y").textContent = new Date().getFullYear();
   </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
