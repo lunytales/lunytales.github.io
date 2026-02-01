@@ -121,3 +121,63 @@ body{
     max-width: 520px;
   }
 }
+/* Footer morado (coherente con el hero) */
+.footer-luny{
+  background: var(--indigo);
+  color: #fff;
+  padding: 3rem 0 2rem;
+  overflow: hidden;
+}
+
+.footer-title{
+  font-weight: 800;
+  font-size: .95rem;
+  letter-spacing: .02em;
+  color: rgba(255,255,255,.92);
+  margin-bottom: .75rem;
+}
+
+.footer-tagline{
+  color: rgba(255,255,255,.78);
+  max-width: 34ch;
+}
+
+.footer-links a{
+  display: inline-block;
+  color: rgba(255,255,255,.9);
+  text-decoration: none;
+  padding: .18rem 0;
+  opacity: .92;
+}
+
+.footer-links a:hover{
+  opacity: 1;
+  color: var(--mint);
+}
+
+.footer-email{
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.footer-email:hover{
+  color: var(--mint);
+}
+
+.footer-bottom{
+  border-top: 1px solid rgba(255,255,255,.18);
+  color: rgba(255,255,255,.75);
+}
+
+.footer-mascota{
+  position: absolute;
+  right: -40px;
+  bottom: -30px;
+  width: 320px;
+  max-width: 38vw;
+  height: auto;
+  opacity: .18;
+  pointer-events: none;
+  user-select: none;
+}
