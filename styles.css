@@ -1,90 +1,111 @@
 :root{
   --indigo:#3a329c;
   --mint:#5fc498;
+  --white:#ffffff;
+
+  --hero-text:#ffffff;
+  --hero-muted:rgba(255,255,255,.82);
+
+  --radius-lg:28px;
+  --pill:999px;
 }
 
-/* look & feel */
+/* Base */
 body{
-  background:
-    radial-gradient(900px 500px at 15% 10%, rgba(58,50,156,.22), transparent 60%),
-    radial-gradient(700px 450px at 80% 20%, rgba(95,196,152,.18), transparent 60%),
-    #f7f8fb;
+  background:#f7f8fb;
 }
 
-.navbar{
-  backdrop-filter: blur(10px);
+/* Navbar morada (solo arriba) */
+.nav-luny{
+  background: var(--indigo);
+  border-bottom: 1px solid rgba(255,255,255,.10);
+}
+
+.nav-luny .nav-link{
+  color: rgba(255,255,255,.88);
+}
+
+.nav-luny .nav-link:hover{
+  color: #ffffff;
+}
+
+/* Botones (más redondos tipo Figma) */
+.btn-pill{
+  border-radius: var(--pill) !important;
 }
 
 .btn-primary{
-  background: linear-gradient(135deg, var(--mint), #86e6c2);
-  border: 0;
-  color:#052015;
+  background: var(--mint);
+  border-color: var(--mint);
+  color: #0b1f17;
   font-weight: 800;
 }
+
+.btn-primary:hover{
+  background: #79d9b4;
+  border-color: #79d9b4;
+  color: #0b1f17;
+}
+
+.btn-outline-light{
+  border-width: 2px;
+}
+
 .btn-outline-secondary{
   border-color: rgba(58,50,156,.25);
 }
 
-.card, .border.rounded, .rounded{
-  border-radius: 18px !important;
-}
-
+/* Cards / rounding general (no destruye Bootstrap, solo mejora look) */
 .card{
   border: 1px solid rgba(0,0,0,.06);
+  border-radius: 18px;
 }
 
 .shadow-sm{
   box-shadow: 0 18px 60px rgba(0,0,0,.08) !important;
 }
 
-/* hero */
-header.py-5{
-  padding-top: 4.5rem !important;
-  padding-bottom: 4.5rem !important;
+/* HERO (solo primera sección) */
+.hero-luny{
+  position: relative;
+  background: var(--indigo);
+  color: var(--hero-text);
+  padding: 72px 0 64px;
+  overflow: hidden;
 }
 
-/* ===== Luny brand tweaks (safe over Bootstrap) ===== */
-:root{
-  --luny-indigo:#3a329c;
-  --luny-mint:#5fc498;
-}
-
-/* Botón principal (sin pelear con Bootstrap) */
-.btn-primary{
-  background: linear-gradient(135deg, var(--luny-mint), #86e6c2) !important;
-  border: 0 !important;
-  color:#052015 !important;
-  font-weight: 800;
-}
-.btn-primary:hover{ filter: brightness(.98); }
-
-/* Redondeo suave */
-.card, .btn, .form-control, .navbar, .dropdown-menu{
-  border-radius: 16px !important;
-}
-
-/* Sombra sutil */
-.shadow-sm, .card{
-  box-shadow: 0 18px 60px rgba(0,0,0,.08) !important;
-}
-
-/* Fondo ligero con tu paleta (muy discreto) */
-body{
+.hero-luny::before{
+  /* sutiles luces para que no se vea “plano” */
+  content:"";
+  position:absolute;
+  inset:-20% -10% auto -10%;
+  height: 420px;
   background:
-    radial-gradient(900px 500px at 15% 10%, rgba(58,50,156,.16), transparent 60%),
-    radial-gradient(700px 450px at 80% 20%, rgba(95,196,152,.12), transparent 60%),
-    #f7f8fb !important;
+    radial-gradient(520px 320px at 12% 20%, rgba(255,255,255,.12), transparent 70%),
+    radial-gradient(520px 320px at 88% 20%, rgba(95,196,152,.20), transparent 70%);
+  pointer-events:none;
 }
 
-/* Navbar tipo vidrio */
-.navbar{
-  background: rgba(255,255,255,.88) !important;
-  backdrop-filter: blur(10px);
+.hero-logo{
+  width: min(360px, 90%);
+  height: auto;
+  display:block;
 }
 
-.hero-media{
-  background: transparent;
-  border: 0;
+.hero-title{
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  font-size: clamp(2.1rem, 3.6vw, 3.2rem);
+  margin: 0;
 }
 
+.hero-lead{
+  color: var(--hero-muted);
+  font-size: 1.08rem;
+  max-width: 46ch;
+}
 
+.hero-note{
+  color: rgba(255,255,255,.70);
+ 
