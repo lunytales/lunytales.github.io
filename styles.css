@@ -16,7 +16,7 @@ body{
     #f7f8fb;
 }
 
-/* Navbar morada */
+/* Navbar */
 .navbar-luny{
   background: var(--indigo);
 }
@@ -37,6 +37,7 @@ body{
 .navbar-luny .navbar-toggler{
   border-color: rgba(255,255,255,.35);
 }
+
 .navbar-luny .navbar-toggler-icon{
   filter: invert(1);
 }
@@ -70,28 +71,20 @@ body{
   color:#052015;
 }
 
-.btn-outline-light{
+.btn-outline-mint{
   border-width: 2px;
+  border-color: var(--mint);
+  color: var(--mint);
+  background: transparent;
 }
 
-/* CTA del navbar oculto en desktop */
-@media (min-width: 992px){
-  .nav-cta{
-    display: none !important;
-  }
+.btn-outline-mint:hover,
+.btn-outline-mint:focus{
+  background: var(--mint);
+  color: #052015;
 }
 
-/* Cards / sombras */
-.card{
-  border: 1px solid rgba(0,0,0,.06);
-  border-radius: 18px !important;
-}
-
-.shadow-sm{
-  box-shadow: 0 18px 60px rgba(0,0,0,.08) !important;
-}
-
-/* HERO */
+/* Hero */
 .hero-luny{
   background: var(--indigo);
   color: #fff;
@@ -125,18 +118,36 @@ body{
   display: inline-block;
 }
 
-@media (max-width: 991.98px){
-  .hero-luny{
-    padding: 3.5rem 0 4rem;
-    text-align: left;
-  }
-
-  .hero-mascota{
-    max-width: 520px;
-  }
+/* Qué incluye */
+#incluye .incluye-card{
+  color: inherit;
 }
 
-/* Cards verticales (cuentos) */
+#incluye .incluye-card .text-secondary{
+  color: inherit !important;
+}
+
+#incluye .incluye-card--1{
+  background: #eff9ff;
+  color: #124e71;
+}
+
+#incluye .incluye-card--2{
+  background: #ecfdf5;
+  color: #407564;
+}
+
+#incluye .incluye-card--3{
+  background: #fef7ed;
+  color: #9a5a43;
+}
+
+#incluye .incluye-card--4{
+  background: #eef2ff;
+  color: #373584;
+}
+
+/* Cuentos */
 .story-vertical{
   display: flex;
   flex-direction: column;
@@ -200,7 +211,7 @@ body{
   color: rgba(255,255,255,.92);
 }
 
-/* Cómo funciona (pills) */
+/* Cómo funciona */
 #como .row{
   align-items: stretch;
 }
@@ -255,20 +266,7 @@ body{
 .how-pill--mint{ background: var(--how-mint); }
 .how-pill--durazno{ background: var(--how-durazno); }
 
-@media (max-width: 991.98px){
-  .how-pill{
-    padding: 1.10rem 1.10rem;
-    min-height: 120px;
-  }
-  .how-pill__icon{ width: 72px; }
-  .how-pill__desc{ max-width: 42ch; }
-}
-
-@media (max-width: 575.98px){
-  .how-pill__icon{ width: 64px; }
-}
-
-/* Footer morado */
+/* Footer */
 .footer-luny{
   background: var(--indigo);
   color: #fff;
@@ -318,7 +316,6 @@ body{
   color: rgba(255,255,255,.75);
 }
 
-/* Mascota decorativa (solo desktop) */
 .footer-mascota{
   position: absolute;
   right: -40px;
@@ -332,8 +329,47 @@ body{
   z-index: 0;
 }
 
-/* Contenido encima */
 .footer-luny .container{
   position: relative;
   z-index: 1;
+}
+
+/* Utilities */
+.card{
+  border: 1px solid rgba(0,0,0,.06);
+  border-radius: 18px !important;
+}
+
+.shadow-sm{
+  box-shadow: 0 18px 60px rgba(0,0,0,.08) !important;
+}
+
+/* Media queries */
+@media (min-width: 992px){
+  .nav-cta{
+    display: none !important;
+  }
+}
+
+@media (max-width: 991.98px){
+  .hero-luny{
+    padding: 3.5rem 0 4rem;
+    text-align: left;
+  }
+
+  .hero-mascota{
+    max-width: 520px;
+  }
+
+  .how-pill{
+    padding: 1.10rem 1.10rem;
+    min-height: 120px;
+  }
+
+  .how-pill__icon{ width: 72px; }
+  .how-pill__desc{ max-width: 42ch; }
+}
+
+@media (max-width: 575.98px){
+  .how-pill__icon{ width: 64px; }
 }
