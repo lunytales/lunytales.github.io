@@ -42,6 +42,20 @@ body{
   border-radius: 999px !important;
 }
 
+/* Botón unificado (tamaño/altura) */
+.btn-luny{
+  padding: .78rem 1.25rem !important;
+  font-size: 1rem !important;
+  line-height: 1.1 !important;
+  font-weight: 800 !important;
+  min-height: 48px;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: .5rem;
+}
+
+/* Colores / hovers */
 .btn-primary{
   background: var(--mint);
   border: 0;
@@ -56,6 +70,14 @@ body{
 
 .btn-outline-light{
   border-width: 2px;
+}
+
+/* Cinturón y tirantes:
+   si por alguna razón Bootstrap/CSS externo muestra el CTA en desktop, aquí lo forzamos a oculto. */
+@media (min-width: 992px){
+  .nav-cta{
+    display: none !important;
+  }
 }
 
 /* Cards / sombras */
@@ -75,7 +97,6 @@ body{
   padding: 4.25rem 0 4.75rem;
 }
 
-/* Logo grande dentro del hero */
 .hero-logo{
   display: inline-block;
   width: 340px;
@@ -83,7 +104,6 @@ body{
   height: auto;
 }
 
-/* Tipografía hero */
 .hero-title{
   font-weight: 900;
   font-size: clamp(2rem, 3.3vw, 3.25rem);
@@ -97,7 +117,6 @@ body{
   margin: 0;
 }
 
-/* Mascota: NO se corta, NO se sale */
 .hero-mascota{
   width: 100%;
   max-width: 560px;
@@ -105,7 +124,6 @@ body{
   display: inline-block;
 }
 
-/* Responsive fino */
 @media (max-width: 991.98px){
   .hero-luny{
     padding: 3.5rem 0 4rem;
@@ -117,7 +135,7 @@ body{
   }
 }
 
-/* Cards verticales */
+/* Cards verticales (cuentos) */
 .story-vertical{
   display: flex;
   flex-direction: column;
@@ -125,14 +143,18 @@ body{
   overflow: hidden;
 }
 
-/* Importante: esto SOLO se ve si tus PNG tienen transparencia.
-   Si el blanco está dentro de la imagen, hay que re-exportar con fondo transparente. */
+/* Importante para que la zona superior NO herede el blanco de .card */
+.story-vertical.card{
+  background: transparent;
+}
+
+/* Fondo gris detrás de los PNG transparentes */
 .story-vertical__media{
   flex: 0 0 auto;
   aspect-ratio: 1 / 1;
   width: 100%;
   overflow: hidden;
-  background: #f7f8fb; /* mismo gris del sitio */
+  background: #f7f8fb; /* gris del sitio */
 }
 
 .story-vertical__img{
@@ -140,33 +162,32 @@ body{
   height: 100%;
   object-fit: cover;
   display: block;
+  background: transparent;
 }
 
+/* Tarjeta inferior: morado + texto blanco */
 .story-vertical__body{
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 
-  background: var(--mint);
+  background: var(--indigo);
   color: #ffffff;
 
-  /* un poco más compacto para mejorar jerarquía */
   padding: 1.10rem 1.20rem 1.20rem;
 
   border-bottom-left-radius: 18px;
   border-bottom-right-radius: 18px;
 }
 
-/* Jerarquía tipográfica (más título, menos aire) */
 .story-title{
   font-weight: 900;
-  font-size: 1.45rem;      /* + un poco */
+  font-size: 1.45rem;
   letter-spacing: -0.01em;
   line-height: 1.08;
-  margin: 0 0 .35rem 0;    /* menos espacio con la descripción */
+  margin: 0 0 .35rem 0;
 
-  /* consistente si algún título cae en 2 líneas */
   min-height: 2.2em;
   display: -webkit-box;
   -webkit-box-orient: vertical;
