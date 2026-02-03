@@ -97,15 +97,10 @@ body{
   margin: 0;
 }
 
-.hero-note{
-  color: rgba(255,255,255,.75);
-  font-size: .875rem;
-}
-
 /* Mascota: NO se corta, NO se sale */
 .hero-mascota{
   width: 100%;
-  max-width: 560px;   /* Ajusta si la quieres más grande */
+  max-width: 560px;
   height: auto;
   display: inline-block;
 }
@@ -121,7 +116,72 @@ body{
     max-width: 520px;
   }
 }
-/* Footer morado (coherente con el hero) */
+
+/* Cards verticales */
+.story-vertical{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Importante: esto SOLO se ve si tus PNG tienen transparencia.
+   Si el blanco está dentro de la imagen, hay que re-exportar con fondo transparente. */
+.story-vertical__media{
+  flex: 0 0 auto;
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  overflow: hidden;
+  background: #f7f8fb; /* mismo gris del sitio */
+}
+
+.story-vertical__img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.story-vertical__body{
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  background: var(--mint);
+  color: #ffffff;
+
+  /* un poco más compacto para mejorar jerarquía */
+  padding: 1.10rem 1.20rem 1.20rem;
+
+  border-bottom-left-radius: 18px;
+  border-bottom-right-radius: 18px;
+}
+
+/* Jerarquía tipográfica (más título, menos aire) */
+.story-title{
+  font-weight: 900;
+  font-size: 1.45rem;      /* + un poco */
+  letter-spacing: -0.01em;
+  line-height: 1.08;
+  margin: 0 0 .35rem 0;    /* menos espacio con la descripción */
+
+  /* consistente si algún título cae en 2 líneas */
+  min-height: 2.2em;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.story-desc{
+  margin: 0;
+  font-size: 1.02rem;
+  line-height: 1.35;
+  color: rgba(255,255,255,.92);
+}
+
+/* Footer morado */
 .footer-luny{
   background: var(--indigo);
   color: #fff;
