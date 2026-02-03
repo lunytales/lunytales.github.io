@@ -93,7 +93,7 @@ body{
 
 .hero-logo{
   display: inline-block;
-  width: 340px;
+  width: 500px;
   max-width: 100%;
   height: auto;
 }
@@ -372,4 +372,11 @@ body{
 
 @media (max-width: 575.98px){
   .how-pill__icon{ width: 64px; }
+  #a-dormir-3-cuentos .cta-stack{
+    align-items: stretch;
+  }
+
+  #a-dormir-3-cuentos .cta-stack .btn{
+    width: 100%;
+  }
 }
