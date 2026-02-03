@@ -1,6 +1,11 @@
 :root{
   --indigo:#3a329c;
   --mint:#5fc498;
+
+  --how-text:#091e2f;
+  --how-lila:#d1d6fc;
+  --how-mint:#6cc8a3;
+  --how-durazno:#fcc883;
 }
 
 /* Base */
@@ -29,7 +34,6 @@ body{
   opacity: 1;
 }
 
-/* Para que el toggler se vea bien sobre morado */
 .navbar-luny .navbar-toggler{
   border-color: rgba(255,255,255,.35);
 }
@@ -37,12 +41,11 @@ body{
   filter: invert(1);
 }
 
-/* Botones pro (pill) */
+/* Botones */
 .btn-pill{
   border-radius: 999px !important;
 }
 
-/* Botón unificado (tamaño/altura) */
 .btn-luny{
   padding: .78rem 1.25rem !important;
   font-size: 1rem !important;
@@ -55,7 +58,6 @@ body{
   gap: .5rem;
 }
 
-/* Colores / hovers */
 .btn-primary{
   background: var(--mint);
   border: 0;
@@ -72,8 +74,7 @@ body{
   border-width: 2px;
 }
 
-/* Cinturón y tirantes:
-   si por alguna razón Bootstrap/CSS externo muestra el CTA en desktop, aquí lo forzamos a oculto. */
+/* CTA del navbar oculto en desktop */
 @media (min-width: 992px){
   .nav-cta{
     display: none !important;
@@ -90,7 +91,7 @@ body{
   box-shadow: 0 18px 60px rgba(0,0,0,.08) !important;
 }
 
-/* HERO morado sólido */
+/* HERO */
 .hero-luny{
   background: var(--indigo);
   color: #fff;
@@ -143,18 +144,16 @@ body{
   overflow: hidden;
 }
 
-/* Importante para que la zona superior NO herede el blanco de .card */
 .story-vertical.card{
   background: transparent;
 }
 
-/* Fondo gris detrás de los PNG transparentes */
 .story-vertical__media{
   flex: 0 0 auto;
   aspect-ratio: 1 / 1;
   width: 100%;
   overflow: hidden;
-  background: #f7f8fb; /* gris del sitio */
+  background: #f7f8fb;
 }
 
 .story-vertical__img{
@@ -165,7 +164,6 @@ body{
   background: transparent;
 }
 
-/* Tarjeta inferior: morado + texto blanco */
 .story-vertical__body{
   flex: 1 1 auto;
   display: flex;
@@ -202,12 +200,71 @@ body{
   color: rgba(255,255,255,.92);
 }
 
+/* Cómo funciona (pills) */
+.how-pill{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+
+  border-radius: 18px;
+  padding: 1.25rem 1.25rem;
+
+  color: var(--how-text);
+  box-shadow: 0 18px 60px rgba(0,0,0,.08);
+  border: 1px solid rgba(0,0,0,.06);
+
+  min-height: 132px;
+}
+
+.how-pill__text{ min-width: 0; }
+
+.how-pill__title{
+  font-weight: 900;
+  font-size: 1.35rem;
+  line-height: 1.05;
+  margin: 0 0 .35rem 0;
+}
+
+.how-pill__desc{
+  font-size: 1.02rem;
+  line-height: 1.25;
+  margin: 0;
+  max-width: 34ch;
+}
+
+.how-pill__icon{
+  width: 86px;
+  height: auto;
+  flex: 0 0 auto;
+  user-select: none;
+  pointer-events: none;
+}
+
+.how-pill--lila{ background: var(--how-lila); }
+.how-pill--mint{ background: var(--how-mint); }
+.how-pill--durazno{ background: var(--how-durazno); }
+
+@media (max-width: 991.98px){
+  .how-pill{
+    padding: 1.10rem 1.10rem;
+    min-height: 120px;
+  }
+  .how-pill__icon{ width: 72px; }
+  .how-pill__desc{ max-width: 42ch; }
+}
+
+@media (max-width: 575.98px){
+  .how-pill__icon{ width: 64px; }
+}
+
 /* Footer morado */
 .footer-luny{
   background: var(--indigo);
   color: #fff;
   padding: 3rem 0 2rem;
   overflow: hidden;
+  position: relative;
 }
 
 .footer-title{
@@ -251,6 +308,7 @@ body{
   color: rgba(255,255,255,.75);
 }
 
+/* Mascota decorativa (solo desktop) */
 .footer-mascota{
   position: absolute;
   right: -40px;
@@ -261,4 +319,11 @@ body{
   opacity: .18;
   pointer-events: none;
   user-select: none;
+  z-index: 0;
+}
+
+/* Contenido encima */
+.footer-luny .container{
+  position: relative;
+  z-index: 1;
 }
