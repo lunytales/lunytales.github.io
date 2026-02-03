@@ -41,7 +41,17 @@
         <div class="navbar-nav ms-auto gap-2 align-items-lg-center">
           <a class="nav-link" href="#incluye">Ver qué incluye</a>
           <a class="nav-link" href="#como">Cómo funciona</a>
-          <a class="btn btn-primary btn-pill px-4" href="https://pay.hotmart.com/H100949723W?off=94i6su53" target="_blank" rel="noopener">Obtener ahora</a>
+
+          <!-- ESTE CTA: SOLO móvil/tablet (cuando hay hamburguesa).
+               En escritorio (>= lg) desaparece. -->
+          <a
+            class="btn btn-primary btn-pill btn-luny px-4 nav-cta d-lg-none"
+            href="https://pay.hotmart.com/H100949723W?off=94i6su53"
+            target="_blank"
+            rel="noopener"
+          >
+            Obtener ahora
+          </a>
         </div>
       </div>
     </div>
@@ -66,9 +76,24 @@
             Mucho más que un cuento para dormir. Un ecosistema de aprendizaje: PDF + Audio + Alexa. Tres historias para que tus hijos crezcan en valores mientras descansan.
           </p>
 
+          <!-- HERO: CTA siempre visible en todas las versiones -->
           <div class="d-flex flex-wrap gap-3" id="comprar">
-            <a class="btn btn-primary btn-lg btn-pill px-4" href="https://pay.hotmart.com/H100949723W?off=94i6su53" target="_blank" rel="noopener" role="button">Obtener ahora</a>
-            <a class="btn btn-outline-light btn-lg btn-pill px-4" href="#incluye" role="button">Ver qué incluye</a>
+            <a
+              class="btn btn-primary btn-pill btn-luny px-4"
+              href="https://pay.hotmart.com/H100949723W?off=94i6su53"
+              target="_blank"
+              rel="noopener"
+              role="button"
+            >
+              Obtener ahora
+            </a>
+            <a
+              class="btn btn-outline-light btn-pill btn-luny px-4"
+              href="#incluye"
+              role="button"
+            >
+              Ver qué incluye
+            </a>
           </div>
         </div>
 
@@ -203,8 +228,16 @@
         </div>
       </div>
 
+      <!-- CTA: se queda SIEMPRE -->
       <div class="mt-4">
-        <a class="btn btn-primary btn-pill px-4" href="https://pay.hotmart.com/H100949723W?off=94i6su53" target="_blank" rel="noopener">Obtener ahora</a>
+        <a
+          class="btn btn-primary btn-pill btn-luny px-4"
+          href="https://pay.hotmart.com/H100949723W?off=94i6su53"
+          target="_blank"
+          rel="noopener"
+        >
+          Obtener ahora
+        </a>
       </div>
     </div>
   </section>
@@ -304,7 +337,7 @@
 
           <div class="mt-2">
             <a
-              class="btn btn-primary btn-pill px-4"
+              class="btn btn-primary btn-pill btn-luny px-4"
               href="mailto:lunytales@gmail.com?subject=Contacto%20%E2%80%94%20Luny%20Tales&body=Hola%20Luny%20Tales%2C%0D%0A%0D%0A"
             >
               Enviar correo
