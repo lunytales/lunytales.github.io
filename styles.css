@@ -201,6 +201,14 @@ body{
 }
 
 /* Cómo funciona (pills) */
+#como .row{
+  align-items: stretch;
+}
+
+#como .row > [class*="col-"]{
+  display: flex;
+}
+
 .how-pill{
   display: flex;
   align-items: center;
@@ -215,6 +223,8 @@ body{
   border: 1px solid rgba(0,0,0,.06);
 
   min-height: 132px;
+  height: 100%;
+  flex: 1 1 auto;
 }
 
 .how-pill__text{ min-width: 0; }
