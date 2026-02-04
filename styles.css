@@ -370,6 +370,18 @@ body{
   .how-pill__desc{ max-width: 42ch; }
 }
 
+@media (min-width: 576px) and (max-width: 991.98px){
+  #a-dormir-3-cuentos .cta-stack{
+    flex-direction: row !important;
+    align-items: stretch !important;
+  }
+
+  #a-dormir-3-cuentos .cta-stack .btn{
+    flex: 1 1 0;
+    width: 50%;
+  }
+}
+
 @media (max-width: 575.98px){
   .how-pill__icon{ width: 64px; }
   #a-dormir-3-cuentos .cta-stack{
