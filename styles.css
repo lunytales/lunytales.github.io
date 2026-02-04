@@ -16,6 +16,29 @@ body{
     #f7f8fb;
 }
 
+.skip-link{
+  position: absolute;
+  left: -999px;
+  top: 0;
+  padding: .5rem .75rem;
+  background: #fff;
+  color: #052015;
+  border: 2px solid var(--mint);
+  border-radius: 8px;
+  z-index: 1000;
+}
+
+.skip-link:focus-visible{
+  left: 1rem;
+  top: 1rem;
+}
+
+a:focus-visible,
+button:focus-visible{
+  outline: 3px solid var(--mint);
+  outline-offset: 3px;
+}
+
 /* Navbar */
 .navbar-luny{
   background: var(--indigo);
