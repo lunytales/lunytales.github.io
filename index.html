@@ -334,21 +334,40 @@ src="https://www.facebook.com/tr?id=4211106805805636&ev=PageView&noscript=1"
   <script>
     (function(){
       var links = document.querySelectorAll('a[href*="hotmart.com"]');
-      if (!links.length) return;
-      links.forEach(function(link){
-        link.addEventListener('click', function(e){
-          try{
-            if (window.fbq) window.fbq('track','InitiateCheckout');
-          } catch (err) {}
-          if (link.target === '_blank' || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) {
-            return;
-          }
-          e.preventDefault();
-          var href = link.href;
-          if (!href) return;
-          setTimeout(function(){ window.location.href = href; }, 200);
+      if (links.length) {
+        links.forEach(function(link){
+          link.addEventListener('click', function(e){
+            try{
+              if (window.fbq) window.fbq('track','InitiateCheckout');
+            } catch (err) {}
+            if (link.target === '_blank' || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) {
+              return;
+            }
+            e.preventDefault();
+            var href = link.href;
+            if (!href) return;
+            setTimeout(function(){ window.location.href = href; }, 200);
+          });
         });
-      });
+      }
+
+      var demoLinks = document.querySelectorAll('a[href*="demo.pdf"]');
+      if (demoLinks.length) {
+        demoLinks.forEach(function(link){
+          link.addEventListener('click', function(e){
+            try{
+              if (window.fbq) window.fbq('trackCustom','ViewDemo');
+            } catch (err) {}
+            if (link.target === '_blank' || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) {
+              return;
+            }
+            e.preventDefault();
+            var href = link.href;
+            if (!href) return;
+            setTimeout(function(){ window.location.href = href; }, 200);
+          });
+        });
+      }
     })();
   </script>
 </body>
