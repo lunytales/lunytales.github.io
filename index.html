@@ -333,51 +333,22 @@ src="https://www.facebook.com/tr?id=4211106805805636&ev=PageView&noscript=1"
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     (function(){
-      function isModifiedClick(e) {
-        return e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0;
-      }
-
-      function shouldBypassNavigation(e, link) {
-        return link.target === '_blank' || isModifiedClick(e);
-      }
-
-      function bindLinks(selector, handler, flagName) {
-        var links = document.querySelectorAll(selector);
-        if (!links.length) return;
-        links.forEach(function(link){
-          if (link.dataset[flagName] === 'true') return;
-          link.dataset[flagName] = 'true';
-
-          link.addEventListener('click', function(e){
-            try { handler(); } catch (err) {}
-
-            if (shouldBypassNavigation(e, link)) {
-              return;
-            }
-
-            e.preventDefault();
-            var href = link.href;
-            if (!href) return;
-            setTimeout(function(){ window.location.href = href; }, 200);
-          });
+      var links = document.querySelectorAll('a[href*="hotmart.com"]');
+      if (!links.length) return;
+      links.forEach(function(link){
+        link.addEventListener('click', function(e){
+          try{
+            if (window.fbq) window.fbq('track','InitiateCheckout');
+          } catch (err) {}
+          if (link.target === '_blank' || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) {
+            return;
+          }
+          e.preventDefault();
+          var href = link.href;
+          if (!href) return;
+          setTimeout(function(){ window.location.href = href; }, 200);
         });
-      }
-
-      bindLinks(
-        'a[href*="hotmart.com"]',
-        function(){
-          if (window.fbq) window.fbq('track', 'InitiateCheckout');
-        },
-        'fbqCheckoutBound'
-      );
-
-      bindLinks(
-        'a[href*="demo.pdf"]',
-        function(){
-          if (window.fbq) window.fbq('trackCustom', 'ViewDemo');
-        },
-        'fbqDemoBound'
-      );
+      });
     })();
   </script>
 </body>
