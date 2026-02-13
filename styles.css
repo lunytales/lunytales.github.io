@@ -62,7 +62,50 @@ button:focus-visible{
 }
 
 .navbar-luny .navbar-toggler-icon{
-  filter: invert(1);
+  background-image: none;
+  background-color: #fff;
+  width: 24px;
+  height: 2px;
+  position: relative;
+  border-radius: 2px;
+  transition: background-color .2s ease;
+}
+
+.navbar-luny .navbar-toggler-icon::before,
+.navbar-luny .navbar-toggler-icon::after{
+  content:"";
+  position:absolute;
+  left:0;
+  width: 24px;
+  height: 2px;
+  background-color: #fff;
+  border-radius: 2px;
+  transition: transform .2s ease, top .2s ease;
+}
+
+.navbar-luny .navbar-toggler-icon::before{
+  top:-7px;
+}
+
+.navbar-luny .navbar-toggler-icon::after{
+  top:7px;
+}
+
+.navbar-luny .navbar-toggler.is-open .navbar-toggler-icon,
+.navbar-luny .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon{
+  background-color: transparent;
+}
+
+.navbar-luny .navbar-toggler.is-open .navbar-toggler-icon::before,
+.navbar-luny .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::before{
+  top:0;
+  transform: rotate(45deg);
+}
+
+.navbar-luny .navbar-toggler.is-open .navbar-toggler-icon::after,
+.navbar-luny .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::after{
+  top:0;
+  transform: rotate(-45deg);
 }
 
 /* Botones */
