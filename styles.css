@@ -1,6 +1,7 @@
 :root{
   --indigo:#3a329c;
   --mint:#5fc498;
+  --nav-offset: 92px;
 
   --how-text:#091e2f;
   --how-lila:#d1d6fc;
@@ -106,6 +107,18 @@ button:focus-visible{
 .navbar-luny .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::after{
   top:0;
   transform: rotate(-45deg);
+}
+
+/* Anclas con header sticky */
+#incluye,
+#como{
+  scroll-margin-top: var(--nav-offset);
+}
+
+@media (max-width: 991.98px){
+  :root{
+    --nav-offset: 104px;
+  }
 }
 
 /* Botones */
