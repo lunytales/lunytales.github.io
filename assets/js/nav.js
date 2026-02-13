@@ -1,7 +1,13 @@
 (() => {
   const nav = document.getElementById("nav");
   const toggler = document.querySelector(".navbar-toggler");
-  if (!nav || !toggler || !window.bootstrap) return;
+  if (!nav || !toggler) return;
+  if (!window.bootstrap) {
+    if (window.location.hostname === "localhost" || window.location.protocol === "file:") {
+      console.warn("Bootstrap no está disponible. El menú accesible no se inicializó.");
+    }
+    return;
+  }
 
   const collapse = bootstrap.Collapse.getOrCreateInstance(nav, { toggle: false });
 
@@ -10,8 +16,17 @@
     toggler.classList.toggle("is-open", isOpen);
   };
 
-  nav.addEventListener("shown.bs.collapse", () => setState(true));
-  nav.addEventListener("hidden.bs.collapse", () => setState(false));
+  const firstLink = nav.querySelector(".nav-link");
+
+  nav.addEventListener("shown.bs.collapse", () => {
+    setState(true);
+    if (firstLink) firstLink.focus();
+  });
+
+  nav.addEventListener("hidden.bs.collapse", () => {
+    setState(false);
+    toggler.focus();
+  });
 
   nav.querySelectorAll(".nav-link").forEach((link) => {
     link.addEventListener("click", () => {
@@ -19,6 +34,12 @@
         collapse.hide();
       }
     });
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && nav.classList.contains("show")) {
+      collapse.hide();
+    }
   });
 
   setState(toggler.getAttribute("aria-expanded") === "true");

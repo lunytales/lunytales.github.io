@@ -122,19 +122,19 @@ button:focus-visible{
 }
 
 /* Botones */
-.btn-pill{
-  border-radius: 999px !important;
+.btn.btn-pill{
+  border-radius: 999px;
 }
 
-.btn-luny{
-  padding: .78rem 1.25rem !important;
-  font-size: 1rem !important;
-  line-height: 1.1 !important;
-  font-weight: 800 !important;
+.luny .btn.btn-luny{
+  padding: .78rem 1.25rem;
+  font-size: 1rem;
+  line-height: 1.1;
+  font-weight: 800;
   min-height: 48px;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   gap: .5rem;
 }
 
@@ -542,13 +542,13 @@ button:focus-visible{
 }
 
 /* Utilities */
-.card{
+.luny .card{
   border: 1px solid rgba(0,0,0,.06);
-  border-radius: 18px !important;
+  border-radius: 18px;
 }
 
-.shadow-sm{
-  box-shadow: 0 18px 60px rgba(0,0,0,.08) !important;
+.luny .shadow-sm{
+  box-shadow: 0 18px 60px rgba(0,0,0,.08);
 }
 
 /* Media queries */
