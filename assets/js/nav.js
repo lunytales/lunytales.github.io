@@ -10,6 +10,12 @@
   }
 
   const collapse = bootstrap.Collapse.getOrCreateInstance(nav, { toggle: false });
+  let lastFocused = null;
+
+  const getFocusable = () =>
+    Array.from(
+      nav.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])')
+    ).filter((el) => el.offsetParent !== null);
 
   const setState = (isOpen) => {
     toggler.setAttribute("aria-label", isOpen ? "Cerrar menú" : "Abrir menú");
@@ -19,13 +25,14 @@
   const firstLink = nav.querySelector(".nav-link");
 
   nav.addEventListener("shown.bs.collapse", () => {
+    lastFocused = document.activeElement;
     setState(true);
     if (firstLink) firstLink.focus();
   });
 
   nav.addEventListener("hidden.bs.collapse", () => {
     setState(false);
-    toggler.focus();
+    (lastFocused || toggler).focus();
   });
 
   nav.querySelectorAll(".nav-link").forEach((link) => {
@@ -37,8 +44,34 @@
   });
 
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && nav.classList.contains("show")) {
+    if (!nav.classList.contains("show")) return;
+
+    if (event.key === "Escape") {
       collapse.hide();
+      return;
+    }
+
+    if (event.key !== "Tab") return;
+
+    const focusable = getFocusable();
+    if (!focusable.length) return;
+
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    const active = document.activeElement;
+
+    if (!nav.contains(active)) {
+      event.preventDefault();
+      first.focus();
+      return;
+    }
+
+    if (event.shiftKey && active === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && active === last) {
+      event.preventDefault();
+      first.focus();
     }
   });
 

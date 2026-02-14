@@ -1,12 +1,4 @@
 (function(){
-  function isModifiedClick(e) {
-    return e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0;
-  }
-
-  function shouldBypassNavigation(e, link) {
-    return link.target === '_blank' || isModifiedClick(e);
-  }
-
   function bindTracking(selector, handler, flagName) {
     var links = document.querySelectorAll(selector);
     if (!links.length) return;
@@ -16,13 +8,6 @@
 
       link.addEventListener('click', function(e){
         try { handler(); } catch (err) {}
-        if (shouldBypassNavigation(e, link)) {
-          return;
-        }
-        e.preventDefault();
-        var href = link.href;
-        if (!href) return;
-        setTimeout(function(){ window.location.href = href; }, 200);
       });
     });
   }
