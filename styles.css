@@ -807,10 +807,17 @@ button:focus-visible{
   color:#052015;
 }
 
-.cookie-banner .btn-primary:hover,
-.cookie-banner .btn-primary:focus-visible{
+.cookie-banner .btn-primary:hover{
   background: #86e6c2;
   color:#052015;
+}
+
+.cookie-banner .btn-primary:focus-visible{
+  background: var(--mint);
+  color:#052015;
+  outline: 3px solid rgba(58,50,156,.55);
+  outline-offset: 4px;
+  box-shadow: none;
 }
 
 
