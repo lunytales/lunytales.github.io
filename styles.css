@@ -196,6 +196,21 @@ button:focus-visible{
   color:#052015;
 }
 
+/* Asegurar que el foco NO aclare el botón (evitar efecto “hover permanente”) */
+.btn-primary:focus,
+.btn-primary:focus-visible,
+.btn-primary:active{
+  background: var(--mint);
+  color: #052015;
+}
+
+/* Mantener un foco accesible sin cambiar el fill */
+.btn-primary:focus-visible{
+  outline: 3px solid rgba(98, 88, 214, 0.55);
+  outline-offset: 3px;
+  box-shadow: none;
+}
+
 .btn-outline-mint{
   border-width: 2px;
   border-color: var(--mint);
