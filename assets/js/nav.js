@@ -17,7 +17,8 @@
       nav.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])')
     ).filter((el) => el.offsetParent !== null);
 
-  const setState = (isOpen) => {
+  const syncAriaLabel = () => {
+    const isOpen = toggler.getAttribute("aria-expanded") === "true";
     toggler.setAttribute("aria-label", isOpen ? "Cerrar menú" : "Abrir menú");
     toggler.classList.toggle("is-open", isOpen);
   };
@@ -26,12 +27,12 @@
 
   nav.addEventListener("shown.bs.collapse", () => {
     lastFocused = document.activeElement;
-    setState(true);
+    syncAriaLabel();
     if (firstLink) firstLink.focus();
   });
 
   nav.addEventListener("hidden.bs.collapse", () => {
-    setState(false);
+    syncAriaLabel();
     (lastFocused || toggler).focus();
   });
 
@@ -75,5 +76,5 @@
     }
   });
 
-  setState(toggler.getAttribute("aria-expanded") === "true");
+  syncAriaLabel();
 })();
