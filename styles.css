@@ -3,6 +3,23 @@
   --mint:#5fc498;
   --nav-offset: 92px;
 
+  /* Radii (system) */
+  --radius-sm: 12px;
+  --radius-md: 18px;
+  --radius-pill: 18px;
+
+  /* Shadows (system) — suaves, difusas, sin “glow” evidente */
+  --shadow-card: 0 10px 26px rgba(18, 24, 58, .10);
+  --shadow-card-hover: 0 16px 34px rgba(18, 24, 58, .14);
+  --shadow-btn: 0 8px 18px rgba(18, 24, 58, .10);
+  --shadow-btn-hover: 0 12px 24px rgba(18, 24, 58, .14);
+  --shadow-ambient: 0 28px 70px rgba(18, 24, 58, .12);
+
+  /* Motion */
+  --ease-standard: cubic-bezier(.2,.8,.2,1);
+  --dur-1: 180ms;
+  --dur-2: 260ms;
+
   --how-text:#091e2f;
   --how-lila:#d1d6fc;
   --how-mint:#6cc8a3;
@@ -52,6 +69,7 @@ button:focus-visible{
 
 .navbar-luny .nav-link{
   opacity: .92;
+  border-radius: var(--radius-sm);
 }
 
 .navbar-luny .nav-link:hover{
@@ -123,7 +141,7 @@ button:focus-visible{
 
 /* Botones */
 .btn.btn-pill{
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
 }
 
 .luny .btn.btn-luny{
@@ -136,6 +154,25 @@ button:focus-visible{
   align-items: center;
   justify-content: center;
   gap: .5rem;
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-btn);
+
+  transition:
+    box-shadow var(--dur-1) var(--ease-standard),
+    transform var(--dur-1) var(--ease-standard),
+    background-color var(--dur-1) var(--ease-standard),
+    color var(--dur-1) var(--ease-standard),
+    border-color var(--dur-1) var(--ease-standard);
+}
+
+.luny .btn.btn-luny:hover{
+  box-shadow: var(--shadow-btn-hover);
+  transform: translateY(-1px);
+}
+
+.luny .btn.btn-luny:active{
+  transform: translateY(0);
+  box-shadow: var(--shadow-btn);
 }
 
 .btn-primary{
@@ -168,6 +205,7 @@ button:focus-visible{
   background: var(--indigo);
   color: #fff;
   padding: 4.25rem 0 4.75rem;
+  box-shadow: var(--shadow-ambient);
 }
 
 .hero-logo{
@@ -203,7 +241,7 @@ button:focus-visible{
   color: #fff;
   padding: 3rem 2.5rem;
   text-align: center;
-  box-shadow: 0 18px 60px rgba(0,0,0,.12);
+  box-shadow: var(--shadow-ambient);
   position: relative;
   overflow: hidden;
   border: 1px solid rgba(255,255,255,.08);
@@ -230,15 +268,15 @@ button:focus-visible{
   font-weight: 800;
   display: inline-block;
   padding: .5rem 1.1rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   background: var(--mint);
   border: 0;
 }
 
 .policy-card{
-  border-radius: 20px;
+  border-radius: var(--radius-md);
   border: 0;
-  box-shadow: 0 12px 30px rgba(0,0,0,.06);
+  box-shadow: var(--shadow-card);
   text-align: center;
 }
 
@@ -262,7 +300,6 @@ button:focus-visible{
   border-radius: 50%;
   background: #eefaf5;
   border: 1px solid rgba(58,50,156,.08);
-  box-shadow: inset 0 0 0 10px #f7fdf9;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -276,9 +313,9 @@ button:focus-visible{
 }
 
 .policy-panel{
-  border-radius: 22px;
+  border-radius: var(--radius-md);
   border: 1px solid rgba(0,0,0,.05);
-  box-shadow: 0 12px 30px rgba(0,0,0,.06);
+  box-shadow: var(--shadow-card);
 }
 
 .policy-panel .card-body{
@@ -299,10 +336,10 @@ button:focus-visible{
 }
 
 .policy-contact{
-  border-radius: 26px;
+  border-radius: var(--radius-md);
   background: #f7f8fb;
   border: 1px solid rgba(58,50,156,.08);
-  box-shadow: 0 12px 30px rgba(0,0,0,.06);
+  box-shadow: var(--shadow-card);
 }
 
 .footer-legal a{
@@ -330,8 +367,8 @@ button:focus-visible{
   color: inherit;
 }
 
-#incluye .incluye-card .text-secondary{
-  color: inherit !important;
+#incluye .incluye-note{
+  color: inherit;
 }
 
 #incluye .incluye-card--1{
@@ -393,8 +430,8 @@ button:focus-visible{
 
   padding: 1.10rem 1.20rem 1.20rem;
 
-  border-bottom-left-radius: 18px;
-  border-bottom-right-radius: 18px;
+  border-bottom-left-radius: var(--radius-md);
+  border-bottom-right-radius: var(--radius-md);
 }
 
 .story-title{
@@ -433,11 +470,11 @@ button:focus-visible{
   justify-content: space-between;
   gap: 1rem;
 
-  border-radius: 18px;
+  border-radius: var(--radius-md);
   padding: 1.25rem 1.25rem;
 
   color: var(--how-text);
-  box-shadow: 0 18px 60px rgba(0,0,0,.08);
+  box-shadow: var(--shadow-card);
   border: 1px solid rgba(0,0,0,.06);
 
   min-height: 132px;
@@ -544,11 +581,55 @@ button:focus-visible{
 /* Utilities */
 .luny .card{
   border: 1px solid rgba(0,0,0,.06);
-  border-radius: 18px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
 }
 
 .luny .shadow-sm{
-  box-shadow: 0 18px 60px rgba(0,0,0,.08);
+  box-shadow: var(--shadow-card);
+}
+
+.luny .card:hover,
+.how-pill:hover,
+.policy-card:hover,
+.policy-panel:hover,
+.policy-contact:hover{
+  box-shadow: var(--shadow-card-hover);
+}
+
+@media (prefers-reduced-motion: reduce){
+  *, *::before, *::after{
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+  .luny .btn.btn-luny:hover{ transform: none; }
+}
+
+.hero-luny.hero-luny--grad{
+  background:
+    radial-gradient(900px 520px at 78% 18%, rgba(95,196,152,.16), transparent 62%),
+    radial-gradient(820px 520px at 18% 22%, rgba(20,18,60,.22), transparent 58%),
+    linear-gradient(90deg, #3A329C 0%, #4338B0 38%, #5148C6 68%, #6258D6 100%);
+  color:#fff;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero-luny.hero-luny--grad::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background: radial-gradient(1200px 700px at 50% 50%, rgba(255,255,255,.06), transparent 60%);
+  mix-blend-mode:overlay;
+  opacity:.35;
+}
+
+.hero-luny.hero-luny--grad > .container{
+  position:relative;
+  z-index:1;
 }
 
 /* Media queries */
