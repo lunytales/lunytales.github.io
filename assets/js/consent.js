@@ -51,9 +51,6 @@
     if (!banner) return;
     banner.removeAttribute("hidden");
     setBodyPadding();
-    if (document.activeElement === document.body) {
-      banner.focus({ preventScroll: true });
-    }
   };
 
   const hideBanner = () => {
