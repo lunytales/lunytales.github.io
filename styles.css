@@ -815,9 +815,21 @@ button:focus-visible{
 .cookie-banner .btn-primary:focus-visible{
   background: var(--mint);
   color:#052015;
-  outline: 3px solid rgba(58,50,156,.55);
-  outline-offset: 4px;
+  outline: 3px solid rgba(95, 196, 152, 0.65);
+  outline-offset: 3px;
   box-shadow: none;
+}
+
+/* Cookie banner: focus solo para teclado */
+.cookie-banner button:focus{
+  outline: none;
+}
+.cookie-banner button:focus-visible{
+  outline: 3px solid rgba(95, 196, 152, 0.65);
+  outline-offset: 3px;
+}
+.cookie-banner button:focus:not(:focus-visible){
+  outline: none;
 }
 
 
