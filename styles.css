@@ -78,6 +78,13 @@ button:focus-visible{
 
 .navbar-luny .navbar-toggler{
   border-color: rgba(255,255,255,.35);
+  width: 52px;
+  height: 44px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
 }
 
 .navbar-luny .navbar-toggler-icon{
@@ -86,6 +93,8 @@ button:focus-visible{
   width: 24px;
   height: 2px;
   position: relative;
+  display: block;
+  margin: 0;
   border-radius: 2px;
   transition: background-color .2s ease;
 }
@@ -365,6 +374,15 @@ button:focus-visible{
 /* Qué incluye */
 #incluye .incluye-card{
   color: inherit;
+  box-shadow: none;
+  border: 1px solid rgba(0,0,0,.06);
+  transition: box-shadow var(--dur-1) var(--ease-standard), transform var(--dur-1) var(--ease-standard);
+}
+
+#incluye .incluye-card:hover,
+#incluye .incluye-card:focus-visible{
+  box-shadow: 0 10px 28px rgba(0,0,0,.14);
+  transform: translateY(-2px);
 }
 
 #incluye .incluye-note{
@@ -474,8 +492,9 @@ button:focus-visible{
   padding: 1.25rem 1.25rem;
 
   color: var(--how-text);
-  box-shadow: var(--shadow-card);
   border: 1px solid rgba(0,0,0,.06);
+  box-shadow: none;
+  transition: box-shadow var(--dur-1) var(--ease-standard), transform var(--dur-1) var(--ease-standard);
 
   min-height: 132px;
   height: 100%;
@@ -590,11 +609,16 @@ button:focus-visible{
 }
 
 .luny .card:hover,
-.how-pill:hover,
 .policy-card:hover,
 .policy-panel:hover,
 .policy-contact:hover{
   box-shadow: var(--shadow-card-hover);
+}
+
+.how-pill:hover,
+.how-pill:focus-visible{
+  box-shadow: 0 10px 28px rgba(0,0,0,.14);
+  transform: translateY(-2px);
 }
 
 @media (prefers-reduced-motion: reduce){
@@ -605,6 +629,14 @@ button:focus-visible{
     animation-iteration-count: 1 !important;
   }
   .luny .btn.btn-luny:hover{ transform: none; }
+  #incluye .incluye-card:hover,
+  #incluye .incluye-card:focus-visible{
+    transform: none;
+  }
+  .how-pill:hover,
+  .how-pill:focus-visible{
+    transform: none;
+  }
 }
 
 .hero-luny.hero-luny--grad{
@@ -632,9 +664,29 @@ button:focus-visible{
   z-index:1;
 }
 
+.hero-luny.hero-luny--grad::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  /* Oscurece ligeramente el lado izquierdo, pero se desvanece suave (sin corte vertical) */
+  background: linear-gradient(
+    90deg,
+    rgba(20,18,60,.30) 0%,
+    rgba(20,18,60,.18) 38%,
+    rgba(20,18,60,.08) 56%,
+    rgba(20,18,60,0) 72%
+  );
+  z-index:0;
+}
+
 /* Media queries */
 @media (min-width: 992px){
   .nav-cta{
+    display: none !important;
+  }
+
+  .navbar-luny .navbar-toggler{
     display: none !important;
   }
 }
