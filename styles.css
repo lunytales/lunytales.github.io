@@ -786,6 +786,18 @@ button:focus-visible{
   padding: .7rem 1.1rem;
 }
 
+.cookie-banner .btn-primary{
+  background: var(--mint);
+  border: 0;
+  color:#052015;
+}
+
+.cookie-banner .btn-primary:hover,
+.cookie-banner .btn-primary:focus-visible{
+  background: #86e6c2;
+  color:#052015;
+}
+
 
 /* Evitar que el banner tape contenido */
 body.has-cookie-banner{
