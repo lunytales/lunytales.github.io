@@ -4,6 +4,9 @@
   const acceptBtn = document.getElementById("cookieAccept");
   const rejectBtn = document.getElementById("cookieReject");
   const prefsBtn = document.getElementById("cookiePrefs");
+  const TRACKING_SRC = (document.currentScript && document.currentScript.getAttribute("src") || "").startsWith("/")
+    ? "/assets/js/tracking.js"
+    : "assets/js/tracking.js";
 
   const setBodyPadding = () => {
     if (!banner || banner.hasAttribute("hidden")) return;
@@ -26,9 +29,22 @@
       s=b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t,s);
     })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
 
-    window.fbq('consent', 'grant');
     window.fbq('init', '4211106805805636');
     window.fbq('track', 'PageView');
+  };
+
+  const loadTracking = () => {
+    if (window.__lunyTrackingLoaded) return;
+    const exists = Array.from(document.scripts).some((s) => (s.src || "").includes(TRACKING_SRC));
+    if (exists) {
+      window.__lunyTrackingLoaded = true;
+      return;
+    }
+    const s = document.createElement("script");
+    s.defer = true;
+    s.src = TRACKING_SRC;
+    s.onload = () => { window.__lunyTrackingLoaded = true; };
+    document.body.appendChild(s);
   };
 
   const showBanner = () => {
@@ -46,7 +62,10 @@
 
   const setConsent = (value) => {
     localStorage.setItem(KEY, value);
-    if (value === "accepted") loadMetaPixel();
+    if (value === "accepted") {
+      loadMetaPixel();
+      loadTracking();
+    }
     hideBanner();
   };
 
@@ -55,6 +74,7 @@
   const consent = getConsent();
   if (consent === "accepted") {
     loadMetaPixel();
+    loadTracking();
   } else if (consent === "rejected") {
     // No cargar el Pixel
   } else {
