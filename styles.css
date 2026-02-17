@@ -801,6 +801,11 @@ button:focus-visible{
   padding: .7rem 1.1rem;
 }
 
+.cookie-banner:focus,
+.cookie-banner:focus-visible{
+  outline: none;
+}
+
 .cookie-banner .btn-primary{
   background: var(--mint);
   border: 0;
