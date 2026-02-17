@@ -1,0 +1,69 @@
+(() => {
+  const KEY = "luny_cookie_consent"; // accepted | rejected
+  const banner = document.getElementById("cookieBanner");
+  const acceptBtn = document.getElementById("cookieAccept");
+  const rejectBtn = document.getElementById("cookieReject");
+  const prefsBtn = document.getElementById("cookiePrefs");
+
+  const setBodyPadding = () => {
+    if (!banner || banner.hasAttribute("hidden")) return;
+    const h = banner.offsetHeight || 96;
+    document.documentElement.style.setProperty("--cookie-h", `${h}px`);
+    document.body.classList.add("has-cookie-banner");
+  };
+
+  const clearBodyPadding = () => {
+    document.body.classList.remove("has-cookie-banner");
+    document.documentElement.style.removeProperty("--cookie-h");
+  };
+
+  const loadMetaPixel = () => {
+    if (window.fbq) return;
+    (function(f,b,e,v,n,t,s){
+      if(f.fbq)return; n=f.fbq=function(){ n.callMethod ? n.callMethod.apply(n,arguments) : n.queue.push(arguments) };
+      if(!f._fbq)f._fbq=n; n.push=n; n.loaded=!0; n.version='2.0'; n.queue=[];
+      t=b.createElement(e); t.async=!0; t.src=v;
+      s=b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t,s);
+    })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+
+    window.fbq('consent', 'grant');
+    window.fbq('init', '4211106805805636');
+    window.fbq('track', 'PageView');
+  };
+
+  const showBanner = () => {
+    if (!banner) return;
+    banner.removeAttribute("hidden");
+    setBodyPadding();
+    if (document.activeElement === document.body && acceptBtn) acceptBtn.focus();
+  };
+
+  const hideBanner = () => {
+    if (!banner) return;
+    banner.setAttribute("hidden", "");
+    clearBodyPadding();
+  };
+
+  const setConsent = (value) => {
+    localStorage.setItem(KEY, value);
+    if (value === "accepted") loadMetaPixel();
+    hideBanner();
+  };
+
+  const getConsent = () => localStorage.getItem(KEY);
+
+  const consent = getConsent();
+  if (consent === "accepted") {
+    loadMetaPixel();
+  } else if (consent === "rejected") {
+    // No cargar el Pixel
+  } else {
+    showBanner();
+  }
+
+  acceptBtn?.addEventListener("click", () => setConsent("accepted"));
+  rejectBtn?.addEventListener("click", () => setConsent("rejected"));
+  prefsBtn?.addEventListener("click", () => showBanner());
+
+  window.addEventListener("resize", () => setBodyPadding(), { passive: true });
+})();
